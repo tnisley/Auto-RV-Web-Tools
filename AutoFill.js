@@ -303,7 +303,7 @@ function setMilesHrs(text, cat) {
 	else if (cat.valueOf() != "H" && cat.valueOf() != "X")
 	{
 		// get miles but not "xx,xxx mile warranty""
-		var searchResult = text.match(/\d*\,*\d+(?= (mi|mile|low|1|one|actual mi|act\. mi))(?! (mi.|mile) (fact|warr))/i);
+		var searchResult = text.match(/\d*\,*\d+(?= (mi\.|mile|low|1|one|actual mi|act\. mi))(?! (mi.|mile) (fact|warr))/i);
 		if (searchResult)
 		{
 			milesHrs = searchResult[0];
@@ -321,6 +321,15 @@ function setEngine(text) {
 	var engine = "";
 	
 	// Get engine value
+	
+	// 2 cylinder
+	if (text.match(/2 cyl/i))
+		engine = "2-Cylinder";
+	
+	// 3 cylinder
+	if (text.match(/3 cyl/i))
+		engine = "3-Cylinder";
+	
 	// 4 cylinder
 	if (text.match(/4 cyl|i4(?!\d|\w)| i\-4/i))
 		engine = "4-Cylinder";
@@ -330,7 +339,7 @@ function setEngine(text) {
 		engine = "5-Cylinder";
 	
 	// 6 cylinder
-	else if (text.match(/6 cyl|v6(?!\d|\w)/i))
+	else if (text.match(/6 cyl|v6|i6(?!\d|\w)/i))
 		engine = "6-Cylinder";
 	
 	// 8 cylinder
@@ -433,10 +442,10 @@ function setDrivetrain(text) {
 // Set stock number if listed. Remove the PhotoId before calling
 // to prevent it from being flagged as the stock number.
 function setStockNum(text) {
-	var regEx = /\#\S+/m;
+	var regEx = / \#[A-Za-z0-9]\S+/m;
 	var stockNum = regEx.exec(text);
 	if (stockNum) {
-		stockNum[0] = stockNum[0].replace(/\#/, "");              // remove # sign
+		stockNum[0] = stockNum[0].replace(/ \#/, "");              // remove # sign
 		document.getElementById("AdListing_StockNumber").value = stockNum[0];
 	}
 }
