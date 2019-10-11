@@ -388,9 +388,8 @@ function setTrans(text) {
 		document.getElementById("AdListing_Transmission").value = "CVT";
 	
 	// Automatic
-	else if (text.match(/ AT(?=\,|\.|\-)/) ||
-			 text.match(/auto|automatic(?=\,|\.| trans)/i) ||
-			 text.match(/^AT(?=\,|\.|\-)/))
+	else if (text.match(/\bAT(?=\,|\.|\-)/) ||
+			 text.match(/auto|automatic(?=\,|\.| trans)/i))
 		document.getElementById("AdListing_Transmission").value = "Automatic";
 	
 	// Manual trans.
