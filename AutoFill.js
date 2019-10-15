@@ -87,7 +87,7 @@ function executeAutoFill() {
 	
 	// Marketplace and Homes don't have make/model.
 	// Turn of validation for make/model.
-	if (category === "M" || category === "H" || category === "P")
+	if (category === "X" || category === "H" || category === "P")
 		ignoreMakeModel();
 
 	
