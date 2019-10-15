@@ -327,11 +327,11 @@ function setEngine(text) {
 		engine = "2-Cylinder";
 	
 	// 3 cylinder
-	if (text.match(/3 cyl/i))
+	else if (text.match(/3 cyl/i))
 		engine = "3-Cylinder";
 	
 	// 4 cylinder
-	if (text.match(/4 cyl|i4(?!\d|\w)| i\-4/i))
+	else if (text.match(/4 cyl|i4(?!\d|\w)| i\-4/i))
 		engine = "4-Cylinder";
 	
 	// 5 cylinder
@@ -402,40 +402,24 @@ function setTrans(text) {
 function setDrivetrain(text) {
 	
 	// 4WD
-	var textToFind = /(4x4|4wd)/i;
-	if (text.search(textToFind) != -1) {
+	if (text.match(/4x4|4wd|MFWD/i))
 		document.getElementById("AdListing_DriveTrain").value = "4-Wheel Drive / 4x4";
-		return true;
-	}
 	
 	// AWD
-	var textToFind = /(awd|all wheel drive)/i;
-	if (text.search(textToFind) != -1) {
+	else if (text.match(/awd|all wheel drive/i))
 		document.getElementById("AdListing_DriveTrain").value = "AWD";
-		return true;
-	}
 	
 	// FWD
-	var textToFind = /(fwd)/i;
-	if (text.search(textToFind) != -1) {
+	else if (text.match(/fwd/i))
 		document.getElementById("AdListing_DriveTrain").value = "FWD";
-		return true;
-	}
 	
 	// RWD
-	var textToFind = /(rwd)/i;
-	if (text.search(textToFind) != -1) {
+	else if (text.match(/rwd/i))
 		document.getElementById("AdListing_DriveTrain").value = "RWD";
-		return true;
-	}
 	
 	// 2WD
-	var textToFind = /(2wd|4x2)/i;
-	if (text.search(textToFind) != -1) {
+	else if (text.match(/2wd|4x2/i)) 
 		document.getElementById("AdListing_DriveTrain").value = "2-Wheel Drive / 4x2";
-		return true;
-	}
-	return false;
 }
 
 // Set stock number if listed. Remove the PhotoId before calling
