@@ -233,7 +233,7 @@ function setYear(text) {
 function setPrice(text) {
 	
 	// find price that is not a payment
-	var searchResult = text.match(/\$\d*\,*\d\d\d(?!\/| down| per| week| bi| month)/g);
+	var searchResult = text.match(/\$\d*\,*\d\d\d(?!\/| down| per| week| bi| month | off)/g);
 	var price = "";
 	console.log(searchResult);
 
@@ -302,8 +302,8 @@ function setMilesHrs(text, cat) {
 	// vehicles with miles
 	else if (cat.valueOf() != "H" && cat.valueOf() != "X")
 	{
-		// get miles but not "xx,xxx mile warranty""
-		var searchResult = text.match(/\d*\,*\d+(?= (mi\.|mile|low|1|one|actual mi|act\. mi))(?! (mi.|mile) (fact|warr))/i);
+		// get miles but not "xx,xxx mile warranty"
+		var searchResult = text.match(/\d*\,*\d+(?= (mi\.|mile|low|1|one|actual mi|act\. mi))(?! (mi.|mile) (fact|warr|ago))/i);
 		if (searchResult)
 		{
 			milesHrs = searchResult[0];
