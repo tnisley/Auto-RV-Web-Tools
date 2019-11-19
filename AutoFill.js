@@ -233,7 +233,7 @@ function setYear(text) {
 function setPrice(text) {
 	
 	// find price that is not a payment
-	var searchResult = text.match(/\$\d*\,*\d\d\d(?!\/| down| per| week| bi| month | off)/g);
+	var searchResult = text.match(/\$\d*\,*\d\d\d(?!\/| down| per| week| bi| month | off)/gi);
 	var price = "";
 	console.log(searchResult);
 
@@ -448,7 +448,7 @@ function verifyDate() {
 }
 
 // Some items don't have a make and/or model. This function turns
-// of make/model validation.
+// ofF make/model validation.
 function ignoreMakeModel() {
 	document.getElementById("AdListing_IgnoreMakeModel").value = "1";
 }
